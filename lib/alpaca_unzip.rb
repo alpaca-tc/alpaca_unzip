@@ -3,6 +3,5 @@
 require 'alpaca_unzip/version'
 
 module AlpacaUnzip
-  class Error < StandardError; end
-  # Your code goes here...
+  Dir[File.expand_path('alpaca_unzip/**/*', __dir__)].each { |path| require(path) }
 end

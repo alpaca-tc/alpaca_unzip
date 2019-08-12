@@ -1,5 +1,14 @@
 # frozen_string_literal: true
 
+def fixture_path(path)
+  File.join(__dir__, 'fixtures', path)
+end
+
+require 'pry'
+
+$LOAD_PATH.unshift(File.expand_path('lib', __dir__))
+require 'alpaca_unzip'
+
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
