@@ -1,0 +1,148 @@
+AllCops:
+  Exclude:
+    - 'bin/*'
+    - 'db/**/*'
+    - 'vendor/**/*'
+    - '**/Rakefile'
+    - '**/config.ru'
+    - 'node_modules/**/*'
+    - '.bundle/**/*'
+    - 'infra/**/*'
+    - 'tmp/**/*'
+    - 'docker/**/*'
+  TargetRubyVersion: 2.6
+  DisplayCopNames: true
+
+Bundler:
+  Enabled: false
+
+Naming:
+  Enabled: false
+
+Metrics/BlockNesting:
+  Enabled: false
+
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/LineLength:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/ModuleLength:
+  Enabled: false
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/DocumentationMethod:
+  Enabled: true
+  Exclude:
+    - 'spec/**/*'
+    - 'app/models/admin_script/**/*.rb'
+    - 'app/lib/automata*'
+    - 'app/lib/automata/**/*.rb'
+    - 'app/controllers/**/*_controller.rb'
+    # ここから先は直すやつ。力尽きたけれど、徐々に直す
+    - app/models/active_model_type/number_string.rb
+    - app/models/active_model_type/wday.rb
+    - app/models/aggregation/attendance_item.rb
+    - app/models/attendance.rb
+    - app/models/attendance/day_schedule.rb
+    - app/models/attendance_item_aggregation.rb
+    - app/models/attendance_item_calculator/basic_employee_calculator.rb
+    - app/models/attendance_item_calculator/calculator.rb
+    - app/models/attendance_item_calculator/elapsed_time_calculator.rb
+    - app/models/attendance_item_calculator/flextime_employee_calculator.rb
+    - app/models/attendance_item_calculator/free_time_employee_calculator.rb
+    - app/models/attendance_item_calculator/manager_employee_calculator.rb
+    - app/models/attendance_item_calculator/scheduled_time_calculator.rb
+    - app/models/attendance_item_calculator/modified_working_hours_employee_calculator.rb
+    - app/models/attendance_item_calculator/modified_working_hours_employee_calculator/start_extra_allowance_time_calculator.rb
+    - app/models/attendance_record.rb
+    - app/models/attendance_record/pair.rb
+    - app/models/concerns/historiable.rb
+    - app/models/contact_network.rb
+    - app/models/current.rb
+    - app/models/employment_rule/basic_employment_rule.rb
+    - app/models/employment_rule/discretionary_labor_employment_rule.rb
+    - app/models/employment_rule/flextime_employment_rule.rb
+    - app/models/employment_rule/shift_work_employment_rule.rb
+    - app/models/employment_rule/supervision_employment_rule.rb
+    - app/models/employment_rule/modified_working_hours_employment_rule.rb
+    - app/models/initial_office_usage.rb
+    - app/models/initial_office_usage/office_initializer.rb
+    - app/queries/admin/settings/employee_query.rb
+    - app/services/base_service.rb
+    - app/validators/association_owner_validator.rb
+    - app/validators/boolean_validator.rb
+    - app/validators/date_validator.rb
+    - app/validators/email_validator.rb
+    - app/validators/phone_number_validator.rb
+    - app/value_objects/attendance_time.rb
+    - app/value_objects/time_schedule.rb
+    - app/value_objects/wday.rb
+    - app/view_objects/admin/attendances_view_object.rb
+    - app/view_objects/contact_network_view_object.rb
+    - app/workers/resync_announcement_worker.rb
+    - lib/create_or_find_by_backport.rb
+    - lib/ridgepole_unsigned_primary_id.rb
+    - lib/webpack.rb
+    - lib/webpack/dev_server.rb
+
+Style/BlockDelimiters:
+  Enabled: false
+
+Style/DoubleNegation:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false
+
+Style/SpecialGlobalVars:
+  Enabled: false
+
+Style/NumericPredicate:
+  Enabled: false
+
+Style/Lambda:
+  Enabled: false
+
+Layout/AlignParameters:
+  EnforcedStyle: with_fixed_indentation
+
+Layout/AlignArguments:
+  EnforcedStyle: with_fixed_indentation
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Lint/AmbiguousRegexpLiteral:
+  Enabled: false
+
+Lint/DisjunctiveAssignmentInConstructor:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 20
+
+Metrics/CyclomaticComplexity:
+  Max: 10
+
+Metrics/PerceivedComplexity:
+  Max: 10
+
+Lint/UselessAccessModifier:
+  ContextCreatingMethods:
+    - concerning
