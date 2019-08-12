@@ -16,6 +16,8 @@ module AlpacaUnzip
       @local_files = parse_local_file_headers
       @central_directories = parse_central_directories
       @end_of_central_directory = parse_end_of_central_directory
+
+      raise "Can't seek to end of file" unless @file.eof?
     end
 
     private
