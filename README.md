@@ -1,24 +1,21 @@
 # AlpacaUnzip
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/alpaca_unzip`. To experiment with that code, run `bin/console` for an interactive prompt.
+`AlpacaUnzip` is a ruby library for reading zip files.
+This repository is trial implementation for learning zip specification.
 
-TODO: Delete this and the text above, and describe your gem
+[zip specification](https://pkware.cachefly.net/webdocs/casestudies/APPNOTE.TXT)
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'alpaca_unzip'
+gem 'alpaca_unzip', github: 'https://github.com/alpaca-tc/alpaca_unzip'
 ```
 
 And then execute:
 
     $ bundle
-
-Or install it yourself as:
-
-    $ gem install alpaca_unzip
 
 ## Usage
 
@@ -32,7 +29,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/alpaca_unzip. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/alpaca-tc/alpaca_unzip. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
@@ -40,4 +37,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the AlpacaUnzip project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/alpaca_unzip/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the AlpacaUnzip project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/alpaca-tc/alpaca_unzip/blob/master/CODE_OF_CONDUCT.md).
