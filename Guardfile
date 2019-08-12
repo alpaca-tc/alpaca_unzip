@@ -12,3 +12,7 @@ guard :rspec, cmd: 'bundle exec rspec' do
   ruby = dsl.ruby
   dsl.watch_spec_files_for(ruby.lib_files)
 end
+
+guard :rubocop, all_on_start: false, cli: ['--auto-correct', '--display-cop-names'] do
+  watch(/.+\.rb$/)
+end
