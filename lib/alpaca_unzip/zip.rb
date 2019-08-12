@@ -10,29 +10,29 @@ module AlpacaUnzip
 
     attr_reader :local_files, :central_directories, :end_of_central_directory
 
-    # @param file [File]
-    def initialize(file)
-      @file = file
+    # @param file [AlpacaUnzip::Binary]
+    def initialize(binary)
+      @binary = binary
       @local_files = parse_local_file_headers
       @central_directories = parse_central_directories
       @end_of_central_directory = parse_end_of_central_directory
 
-      raise "Can't seek to end of file" unless @file.eof?
+      raise "Can't seek to end of file" unless @binary.eof?
     end
 
     private
 
     def parse_local_file_headers
-      previous_position = @file.pos
+      previous_position = @binary.pos
       local_files = []
 
-      while read_signature(@file) == "\x04\x03\x4b\x50"
-        local_file = AlpacaUnzip::LocalFile.parse(@file, previous_position)
+      while read_signature(@binary) == "\x04\x03\x4b\x50"
+        local_file = AlpacaUnzip::LocalFile.parse(@binary, previous_position)
         local_files.push(local_file)
 
         # Move end position of local file for next section
         previous_position = local_file.end_position
-        @file.seek(local_file.end_position)
+        @binary.seek(local_file.end_position)
       end
 
       local_files
@@ -42,12 +42,12 @@ module AlpacaUnzip
       previous_position = local_files.map(&:end_position).max
       central_directories = []
 
-      while read_signature(@file) == "\x02\x01\x4b\x50"
-        central_directory = AlpacaUnzip::CentralDirectory.parse(@file, previous_position)
+      while read_signature(@binary) == "\x02\x01\x4b\x50"
+        central_directory = AlpacaUnzip::CentralDirectory.parse(@binary, previous_position)
         central_directories.push(central_directory)
 
         # Move end position of central directory for next section
-        @file.seek(central_directory.header.end_position)
+        @binary.seek(central_directory.header.end_position)
       end
 
       # TODO: 4.3.13 Digital signature:
@@ -59,9 +59,9 @@ module AlpacaUnzip
 
     # 4.3.16  End of central directory record:
     def parse_end_of_central_directory
-      if read_signature(@file) == "\x06\x05\x4b\x50"
+      if read_signature(@binary) == "\x06\x05\x4b\x50"
         # End of central_directory
-        AlpacaUnzip::EndOfCentralDirectory.parse(@file, @file.pos)
+        AlpacaUnzip::EndOfCentralDirectory.parse(@binary, @binary.pos)
       else
         raise 'Invalid file given'
       end
